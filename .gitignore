@@ -1,12 +1,7 @@
 # Directories to ignore
-bin/**
-bin/Debug/netstandard2.0/**
-obj/**
-obj/Debug/netstandard2.0/**
-output/**
+bin
+obj
 
 # Files to ignore
 *.dll
 *.pdbß
-obj/Debug/netstandard2.0/inter-sdk-csharp.AssemblyInfo.cs
-obj/Debug/netstandard2.0/inter-sdk-csharp.AssemblyInfoInputs.cache
