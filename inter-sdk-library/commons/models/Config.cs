@@ -11,27 +11,27 @@ public class Config
     /// <summary>
     /// The environment in which the client is operating.
     /// </summary>
-    public EnvironmentEnum Environment { get; set;}
+    public EnvironmentEnum Environment { get; set; }
 
     /// <summary>
     /// The client ID for authentication with the system.
     /// </summary>
-    public string ClientId { get; set;}
+    public string ClientId { get; set; }
 
     /// <summary>
     /// The client secret for authentication with the system.
     /// </summary>
-    public string ClientSecret { get; set;}
+    public string ClientSecret { get; set; }
 
     /// <summary>
     /// The certificate used for secure communication with the system.
     /// </summary>
-    public string Certificate { get; set;}
+    public byte[] Certificate { get; set; }
 
     /// <summary>
     /// The password for accessing the client's certificate.
     /// </summary>
-    public string Password { get; set;}
+    public string Password { get; set; }
 
     /// <summary>
     /// Indicates whether debug mode is enabled.
@@ -57,6 +57,15 @@ public class Config
     /// <param name="certificate">The client certificate</param>
     /// <param name="password">The password for the client certificate</param>
     public Config(EnvironmentEnum environment, string clientId, string clientSecret, string certificate, string password)
+    {
+        Environment = environment;
+        ClientId = clientId;
+        ClientSecret = clientSecret;
+        Certificate = File.ReadAllBytes(certificate);
+        Password = password;
+    }
+
+    public Config(EnvironmentEnum environment, string clientId, string clientSecret, byte[] certificate, string password)
     {
         Environment = environment;
         ClientId = clientId;
