@@ -115,6 +115,21 @@ public class BillingSdk
     }
 
     /// <summary>
+    /// Retrieves the billing PDF document based on the specified request code returns the base64.
+    /// </summary>
+    /// <param _name_="_requestCode_"> The unique code identifying the billing request for which the PDF should be retrieved. </param>
+    /// <exception cref="SdkException"> If an error occurs during the retrieval process. </exception>
+    public string RetrieveBillingPdfBase64(string requestCode)
+    {
+        if (billingClient == null)
+        {
+            billingClient = new BillingClient();
+        }
+
+        return billingClient.RetrieveBillingInPdfBase64(config, requestCode);
+    }
+
+    /// <summary>
     /// Retrieves a summary of billing information for a specified period, applying optional filters.
     /// </summary>
     /// <param _name_="_initialDate_"> The starting date for the billing summary retrieval. Format: YYYY-MM-DD. </param>

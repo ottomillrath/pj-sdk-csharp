@@ -160,7 +160,6 @@ public class BillingClient
     /// </summary>
     /// <param _name_="_config_"> The configuration object containing client information. </param>
     /// <param _name_="_requestCode_"> The unique identifier for the billing request whose PDF is to be retrieved. </param>
-    /// <param _name_="_file_"> The file path where the PDF document will be saved. </param>
     /// <exception cref="SdkException"> If there is an error during the retrieval process, such as network issues
     ///                      or API response errors. </exception>
     public string RetrieveBillingInPdfBase64(Config config, string requestCode)
