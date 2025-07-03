@@ -156,6 +156,23 @@ public class BillingClient
     }
 
     /// <summary>
+    /// Retrieves the billing PDF identified by the provided request code returns the base64.
+    /// </summary>
+    /// <param _name_="_config_"> The configuration object containing client information. </param>
+    /// <param _name_="_requestCode_"> The unique identifier for the billing request whose PDF is to be retrieved. </param>
+    /// <param _name_="_file_"> The file path where the PDF document will be saved. </param>
+    /// <exception cref="SdkException"> If there is an error during the retrieval process, such as network issues
+    ///                      or API response errors. </exception>
+    public string RetrieveBillingInPdfBase64(Config config, string requestCode)
+    {
+        InterSdk.LogInfo($"RetrieveBillingPdfBase64 {config.ClientId} requestCode={requestCode}");
+        string url = UrlUtils.BuildUrl(config, Constants.URL_BILLING) + "/" + requestCode + "/pdf";
+        string json = HttpUtils.CallGet(config, url, Constants.BILLET_BILLING_READ_SCOPE, "Error retrieving billing pdf");
+        PdfReturn pdfReturn = JsonSerializer.Deserialize<PdfReturn>(json)!;
+        return pdfReturn.Pdf;
+    }
+
+    /// <summary>
     /// Retrieves a summary of billing records within a specified date range and optional filters.
     /// </summary>
     /// <param _name_="_config_"> The configuration object containing client information. </param>
